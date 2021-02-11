@@ -6,6 +6,7 @@ import Title from "./Components/Title"
 import Sidebar from "./Components/Sidebar"
 import About from "./Components/About"
 import Feedback from "./Components/Feedback"
+import MealContainer from "./Components/MealContainer"
 
 
 class App extends Component {
@@ -55,8 +56,9 @@ class App extends Component {
       <img style={{zIndex: "-1", filter: "blur(5px)", position: "fixed", top: "0", left: "0", height: "100vh", width: "100vw"}} alt="" src={background} />
       <Title visible={this.state.visible} toggleFeedbackVisible={this.toggleFeedbackVisible} toggleVisible={this.toggleVisible} toggleAboutVisible={this.toggleAboutVisible}/>
       {this.state.visible && <Sidebar />} 
-      {this.state.aboutVisible && <About /> }
-      {this.state.feedbackVisible && <Feedback />}
+      {this.state.aboutVisible && <About toggleAboutVisible={this.toggleAboutVisible}/> }
+      {this.state.feedbackVisible && <Feedback toggleFeedbackVisible={this.toggleFeedbackVisible}/>}
+      <MealContainer /> 
       </div>
     );
 }}

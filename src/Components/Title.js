@@ -52,8 +52,8 @@ const blockRight ={
 
 const rightWords = {
     flex: "1 0 auto",
-    marginTop: "0.5rem",
-    marginBottom: "0.2rem",
+    marginTop: "0.3rem",
+    marginBottom: "0.1rem",
     marginRight: "3rem",
     color: "#002601",
     background: "none",

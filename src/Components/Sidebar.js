@@ -43,7 +43,6 @@ const fullscreenNav = {
     width: "100vw",
     textAlign: "center",
     backgroundColor: "rgba(0, 204, 0, 0.7)",
-    zIndex: "-2"
 }
 
 const crossStyle = {

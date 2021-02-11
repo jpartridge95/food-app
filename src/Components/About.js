@@ -7,16 +7,16 @@ class About extends Component {
 
     render() {
         return (
-            <container>
+            <div style={bgCard}>
                 <div>
-                    <button>
+                    <button style={cardButton} onClick={this.props.toggleAboutVisible}>
                         X
                     </button>
                 </div>
 
                 <div>
-                    <h1>About</h1>
-                    <p>
+                    <h1 style={cardTitle}>What we're about</h1>
+                    <p style={cardBody}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
@@ -25,9 +25,45 @@ class About extends Component {
                     deserunt mollit anim id est laborum.
                     </p>
                 </div>
-            </container>
+            </div>
         )
     }
+}
+
+const bgCard = {
+    position: "absolute",
+    height: "75vh",
+    width: "75vw",
+    zIndex: "3",
+    backgroundColor: "rgba(250, 250, 250, 0.95)",
+    margin: "auto",
+    top: "0",
+    bottom: "0",
+    left: "0",
+    right: "0",
+    borderRadius: "1rem",
+    boxShadow: "2px 2px 30px grey",
+}
+
+const cardButton = {
+    background: "none",
+    border: "none",
+    fontSize: "1.3rem",
+    margin: "3rem 5rem",
+    marginBottom: "0px"
+}
+
+const cardBody = {
+    marginLeft: "5rem",
+    color: "#002601",
+    marginRight: "5rem"
+}
+
+const cardTitle = {
+    fontSize: "3rem",
+    marginTop: "0px",
+    textAlign: "center",
+    color: "green"
 }
 
 export default About
