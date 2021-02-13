@@ -6,7 +6,7 @@ import Title from "./Components/Title"
 import Sidebar from "./Components/Sidebar"
 import About from "./Components/About"
 import Feedback from "./Components/Feedback"
-import MealContainer from "./Components/MealContainer"
+import AppContainer from "./Components/AppContainer"
 
 
 class App extends Component {
@@ -58,7 +58,7 @@ class App extends Component {
       {this.state.visible && <Sidebar />} 
       {this.state.aboutVisible && <About toggleAboutVisible={this.toggleAboutVisible}/> }
       {this.state.feedbackVisible && <Feedback toggleFeedbackVisible={this.toggleFeedbackVisible}/>}
-      <MealContainer /> 
+      <AppContainer />
       </div>
     );
 }}

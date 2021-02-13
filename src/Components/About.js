@@ -30,6 +30,8 @@ class About extends Component {
     }
 }
 
+// Using this method of adding styling for now, will change at a later date
+
 const bgCard = {
     position: "absolute",
     height: "75vh",
