@@ -27,6 +27,7 @@ class MealContainer extends Component {
     }
 
     makeFormSee() {
+        console.log(process.env.REACT_APP_API_KEY)
         this.setState(() => ({
             formVisible: true
         }))
@@ -49,7 +50,7 @@ class MealContainer extends Component {
         const url = "https://api.spoonacular.com/recipes/complexSearch"
         let config = {
             params: {
-                apiKey: "ac6829b0e2fc494983e3f23a6a0fcb8c",
+                apiKey: process.env.REACT_APP_API_KEY,
                 query: this.state.query,
                 maxCalories: this.state.maxCal || 9999,
                 minCalories: this.state.minCal || 0,
@@ -62,7 +63,8 @@ class MealContainer extends Component {
                 diet: `${this.state.vegetarian},${this.state.vegan},${this.state.glutenFree}`,
                 addRecipeInformation: true,
                 number: 25,
-                offset: this.state.page * 25
+                offset: this.state.page * 25,
+                limitLicense: false
             } 
         }
         
@@ -121,7 +123,6 @@ class MealContainer extends Component {
                 <button onClick={this.makeFormSee}>Add meal</button>
                 <p>{this.state.vegetarian}</p>
                 {this.state.formVisible && form}
-                {this.state.results.map((elem) => <MealCard />)}
             </div>
          );
     }
