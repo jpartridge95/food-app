@@ -9,17 +9,24 @@ class SearchCards extends Component {
         return ( 
             <div>
                 <div>
-                    <h3>Food Title</h3>
-                    <img src="#"></img>
+                    <h3>{this.props.title}</h3>
+                    <img src={this.props.image}></img>
+                    <button>Add to meal plan</button>
                 </div>
 
                 <div>
-                    <p>Here is where I will render a short description of the recipe in question</p>
+                    <p>{this.props.description.slice(0, 150)}...</p>
+                    <p>Values per serving</p>
+                    <ul>
+                        <li>Calories: {this.props.calories} kcal</li>
+                        <li>Protein: {this.props.protein} g</li>
+                        <li>Fat: {this.props.fat} g</li>
+                        <li>Carbohydrates: {this.props.carbs} g</li>
+                    </ul>
                 </div>
 
                 <div>
                     <button>Tell me more, tell me more</button>
-                    <button>Add to meal plan</button>
                 </div>
             </div>
          );

@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import MealCard from "./MealCard";
+import SearchWindow from "./SearchWindow";
 
 class MealContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             formVisible: false,
-            results: [{
-                id: "",
-                title: "",
-                image: "",
-                description: "",
-                ingredients: {
-                },
-                nutrition: {
-                }
-            }],
+            searchWindowVisible: false,
+            data: [],
             page: 0
         }
         
@@ -27,7 +20,6 @@ class MealContainer extends Component {
     }
 
     makeFormSee() {
-        console.log(process.env.REACT_APP_API_KEY)
         this.setState(() => ({
             formVisible: true
         }))
@@ -69,13 +61,34 @@ class MealContainer extends Component {
         }
         
         axios.get(url, config)
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error))
+        .then((response) => {
+            console.log(response);
+            const results = response.data.results.map((elem) => ({
+                id: elem.id,
+                title: elem.title,
+                image: elem.image,
+                description: elem.summary,
+                nutrition: {
+                    calories: elem.nutrition.nutrients[0].amount,
+                    protein: elem.nutrition.nutrients[1].amount,
+                    fat: elem.nutrition.nutrients[2].amount,
+                    carbs: elem.nutrition.nutrients[3].amount
+                }
+            }))
+            console.log(results)
+
+            this.setState(() => ({
+                data: results
+            }))
+            
+        })
+        .catch((error) => alert(error))
 
         this.setState(() => ({
             vegetarian: "",
             vegan: "",
-            glutenFree: ""
+            glutenFree: "",
+            searchWindowVisible: true
         }))
     }
 
@@ -120,14 +133,21 @@ class MealContainer extends Component {
         </div>
         return ( 
             <div style={{position: "absolute", left: "500px", top: "500px"}}>
-                <button onClick={this.makeFormSee}>Add meal</button>
-                <p>{this.state.vegetarian}</p>
+                <button onClick={this.makeFormSee}>Add meal</button> {/* this needs to be replaced with the MealCards component */ }
+                {/* {this.state.data.map((elem) => <div>
+                    <p id={elem.id}>{elem.title}</p>
+                    <img src={elem.image}></img>
+                </div>)} */}
                 {this.state.formVisible && form}
+                {this.state.searchWindowVisible && <SearchWindow data={this.state.data} page={this.state.page} />}
             </div>
          );
     }
 }
- 
+
+
+
 export default MealContainer;
 
 // Add seperate component to pass props to, which will create new elements on the regular
+// in hindsight the form should have been a component, but its functional there and if it aint broke don't fix it
