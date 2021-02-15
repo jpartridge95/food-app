@@ -17,17 +17,17 @@ class Sidebar extends Component {
                     </div>
 
                     <div>
-                        <h5 style={innerFont}>Single meal</h5>
+                        <button style={innerFont} onClick={this.props.selectOne}>Single meal</button>
                         
                     </div>
 
                     <div>
-                        <h5 style={innerFont}>1 Day's Food<br />(3 meals)</h5>
+                        <button style={innerFont} onClick={this.props.selectThree}>1 Day's Food<br />(3 meals)</button>
                         
                     </div>
 
                     <div>
-                        <h5 style={innerFont}>1 Week's food <br />(21 meals)</h5>
+                        <button style={innerFont} onClick={this.props.selectWeek}>1 Week's food <br />(21 meals)</button>
                         
                     </div>
                 </div>
@@ -58,7 +58,9 @@ const innerFont = {
     fontSize: "1.5rem",
     color: "rgba(245, 245, 245, 0.95)",
     marginTop: "auto",
-    marginBottom: "15vh"
+    marginBottom: "15vh",
+    background: "none",
+    border: "none"
 }
 
 export default Sidebar;

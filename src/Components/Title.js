@@ -23,7 +23,7 @@ class Title extends Component {
                 <button onClick={this.props.toggleVisible}>Open Menu</button>
                 }
             <div style={blockLeft}>
-                <h1 style={titleText}>Thought for Food</h1>
+                <h1 style={titleText}>Thought for Food {this.props.numCards}</h1>
                 <p style={subTitle}>Powered by Spoonacular and ImageCharts</p>
             </div>
 

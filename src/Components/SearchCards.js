@@ -7,17 +7,17 @@ class SearchCards extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <div>
-                    <h3>{this.props.title}</h3>
-                    <img src={this.props.image}></img>
-                    <button>Add to meal plan</button>
+            <div style={cardOuter}>
+                <div style={floatLeft}>
+                    <h2 style={cardTitle}>{this.props.title}</h2>
+                    <img style={roundedImage} alt={this.props.title} src={this.props.image}></img>
+                    <p></p>
+                    <button>Add this item</button>
                 </div>
 
                 <div>
-                    <p>{this.props.description.slice(0, 150)}...</p>
-                    <p>Values per serving</p>
-                    <ul>
+                    <p style={listTitle}>Values per serving</p>
+                    <ul style={listStyle}>
                         <li>Calories: {this.props.calories} kcal</li>
                         <li>Protein: {this.props.protein} g</li>
                         <li>Fat: {this.props.fat} g</li>
@@ -26,11 +26,46 @@ class SearchCards extends Component {
                 </div>
 
                 <div>
-                    <button>Tell me more, tell me more</button>
+                    <p>{this.props.description.slice(0, 250).replace(/(<([^>]+)>)/gi, "")}... <br /> <button>Tell me more, tell me more</button></p>
                 </div>
             </div>
          );
     }
 }
- 
+
+const cardTitle = {
+    color: "green"
+}
+
+const roundedImage = {
+    height: "17vh",
+    borderRadius: "1rem",
+    boxShadow: "2px 2px 10px grey"
+}
+
+const cardOuter = {
+    border: "solid green 2px",
+    padding: "1rem",
+    borderRadius: "2rem",
+    margin: "1rem",
+    content: "",
+    clear: "both",
+    display: "table"
+}
+
+const floatLeft = {
+    float: "left",
+    marginRight: "2rem",
+    width: "20vw"
+}
+
+const listStyle = {
+    listStyleType: "none"
+}
+
+const listTitle = {
+    fontSize: "1.2rem",
+
+}
+
 export default SearchCards;

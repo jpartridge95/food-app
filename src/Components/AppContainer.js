@@ -7,10 +7,15 @@ class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            carbs: 0,
-            fat: 0,
-            protein: 0,
-            calories: 0
+            total: {
+                calories: 0,
+                carbs: 0,
+                fat: 0,
+                protein: 0
+            },
+            meals: {
+
+            }
          }
         
         this.handleMealChange = this.handleMealChange.bind(this)
@@ -36,7 +41,8 @@ class AppContainer extends Component {
                     fat={this.state.fat} 
                     protein={this.state.protein} 
                     calories={this.state.calories}
-                    onChange={this.handleMealChange}/>
+                    onChange={this.handleMealChange}
+                    numCards={this.props.cardsToShow}/>
                 <GraphContainer 
                     carbs={this.state.carbs} 
                     fat={this.state.fat} 

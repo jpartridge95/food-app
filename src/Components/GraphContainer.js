@@ -7,9 +7,9 @@ class GraphContainer extends Component {
     }
     render() { 
         return ( 
-            <container>
+            <div>
                 
-            </container>
+            </div>
          );
     }
 }

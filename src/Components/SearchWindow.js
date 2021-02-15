@@ -15,6 +15,7 @@ class SearchWindow extends Component {
     render() { 
         return ( 
             <div style={bgCard}>
+                <button onClick={this.props.hideSearchWindow} style={closeButton}>X</button>
                 <div style={cardHolder}>
                     {this.props.data.map((elem) => 
                         <SearchCards 
@@ -29,18 +30,23 @@ class SearchWindow extends Component {
                         />
                     )}
                 </div>
-                <div>
-                    <button>{"<"}</button>
-                    <p>Page no. {parseInt(this.props.page) + 1}</p>
-                    <button>{">"}</button>
+                <div style={controlButtons}>
+                    <button style={buttonFlex}>{"<"}</button>
+                    <p style={wordFlex}>Page no. {parseInt(this.props.page) + 1}</p>
+                    <button style={buttonFlex}>{">"}</button>
                 </div>
             </div>
          );
     }
 }
 
+const closeButton = {
+    height: "1.5rem"
+}
+
 const bgCard = {
     position: "fixed",
+    display: "flex",
     height: "82vh",
     width: "82vw",
     zIndex: "3",
@@ -58,10 +64,38 @@ const cardHolder = {
     position: "absolute",
     height: "72vh",
     width: "78vw",
-    top: "2vh",
+    top: "3vh",
     left: "0",
     right: "0",
-    margin: "auto"
+    margin: "auto",
+    overflow: "scroll",
+    boxShadow: "2px 2px 15px grey",
+    borderRadius: "1rem"
+}
+
+const controlButtons = {
+    width: "50vw",
+    height: "4vh",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    bottom: "1vh",
+    left: "0",
+    right: "0",
+    margin: "auto",
+    Align: "center"
+}
+
+const buttonFlex = {
+    flex: "1 0 auto"
+}
+
+const wordFlex = {
+    flex: "1 0 auto",
+    textAlign: "center",
+    
 }
 
 export default SearchWindow;

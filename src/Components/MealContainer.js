@@ -17,6 +17,13 @@ class MealContainer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.makeFormHide = this.makeFormHide.bind(this);
+        this.hideSearchWindow = this.hideSearchWindow.bind(this);
+    }
+
+    hideSearchWindow() {
+        this.setState(() => ({
+            searchWindowVisible: false
+        }))
     }
 
     makeFormSee() {
@@ -77,6 +84,11 @@ class MealContainer extends Component {
             }))
             console.log(results)
 
+            this.props.carbs = results.nutrition.carbs;
+            this.props.protein = results.nutrition.protein;
+            this.props.fat = results.nutrition.fat;
+            this.props.calories = results.nutrition.calories;
+
             this.setState(() => ({
                 data: results
             }))
@@ -133,13 +145,23 @@ class MealContainer extends Component {
         </div>
         return ( 
             <div style={{position: "absolute", left: "500px", top: "500px"}}>
-                <button onClick={this.makeFormSee}>Add meal</button> {/* this needs to be replaced with the MealCards component */ }
-                {/* {this.state.data.map((elem) => <div>
-                    <p id={elem.id}>{elem.title}</p>
-                    <img src={elem.image}></img>
-                </div>)} */}
+                {
+                    this.props.numCards === 1 
+                    &&
+                    <MealCard makeFormSee={this.makeFormSee}/>
+                }
+
+                {
+                    this.props.numCards === 3
+                    &&
+                    <div>
+                        <MealCard makeFormSee={this.makeFormSee}/>
+                        <MealCard makeFormSee={this.makeFormSee}/>
+                        <MealCard makeFormSee={this.makeFormSee}/>
+                    </div>
+                }
                 {this.state.formVisible && form}
-                {this.state.searchWindowVisible && <SearchWindow data={this.state.data} page={this.state.page} />}
+                {this.state.searchWindowVisible && <SearchWindow data={this.state.data} page={this.state.page} hideSearchWindow={this.hideSearchWindow}/>}
             </div>
          );
     }
