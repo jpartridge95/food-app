@@ -17,12 +17,19 @@ class About extends Component {
                 <div>
                     <h1 style={cardTitle}>What we're about</h1>
                     <p style={cardBody}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                    deserunt mollit anim id est laborum.
+                        Hi, <br />
+                        My name is Jordan, the sole founder and creator of Thought for Food and I'm a 
+                        slightly fanatical home chef. My knives are sharp, my wits are dull and
+                        I love talking and cooking food. However there has always been one element of 
+                        cooking which I've always found a hassle - Planning. <br /> <br />
+                        At every stage planning is a pain, from trying to decide what to cook
+                        (especially when on a specific diet), to creating a shopping list, then actually
+                        going to the store to buy them. Which is why I decided to create this. My 
+                        initial plan was to create something for myself to help me make informed decisions
+                        before heading to the store and getting lost in the aisles, ultimately forgetting
+                        to pick up half the ingredients for the dish I'm creating that night. <br /> <br />
+                        Which brings us to the question you might be asking yourself, what exactly
+                        does this website do? <br />
                     </p>
                 </div>
             </div>

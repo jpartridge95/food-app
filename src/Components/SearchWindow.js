@@ -6,20 +6,22 @@ class SearchWindow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            selected: {}
         }
+
     }
 
-
-
     render() { 
+        let onLastPage = (Math.ceil(this.props.totalResults / 25) === (this.props.page + 1))
+        let isPageNumberOne = (this.props.page === 0)
         return ( 
             <div style={bgCard}>
                 <button onClick={this.props.hideSearchWindow} style={closeButton}>X</button>
                 <div style={cardHolder}>
                     {this.props.data.map((elem) => 
                         <SearchCards 
-                            id={elem.id} 
+                            key={elem.id}
+                            id={elem.id}
                             title={elem.title} 
                             image={elem.image}
                             description={elem.description}
@@ -27,13 +29,40 @@ class SearchWindow extends Component {
                             protein={elem.nutrition.protein}
                             carbs={elem.nutrition.carbs}
                             fat={elem.nutrition.fat}
+                            handleSelect={(() => {
+                                this.setState(() => 
+                                    ({selected: {
+                                        id: elem.id,
+                                        calories: elem.nutrition.calories,
+                                        protein: elem.nutrition.protein,
+                                        fat: elem.nutrition.fat,
+                                        carbs: elem.nutrition.carbs,
+                                        image: elem.image,
+                                        title: elem.title
+                                    }
+                                }))
+                                setTimeout(() => this.props.getFoodId(this.state.selected), 200)
+                                this.props.pageReset()
+                            })}
                         />
                     )}
                 </div>
                 <div style={controlButtons}>
-                    <button style={buttonFlex}>{"<"}</button>
-                    <p style={wordFlex}>Page no. {parseInt(this.props.page) + 1}</p>
-                    <button style={buttonFlex}>{">"}</button>
+                    {
+                        isPageNumberOne
+                        ?
+                        <button style={buttonFlex} type="button" disabled>{"<"}</button>
+                        :
+                        <button style={buttonFlex} onClick={this.props.handleDecrement}>{"<"}</button>
+                    }
+                    <p style={wordFlex}>Page no. {parseInt(this.props.page) + 1} {this.state.selected.calories}</p>
+                    {
+                        onLastPage
+                        ?
+                        <button style={buttonFlex} type="button" disabled>{">"}</button>
+                        :
+                        <button style={buttonFlex} onClick={this.props.handleIncrement}>{">"}</button>
+                    }
                 </div>
             </div>
          );

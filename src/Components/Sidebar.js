@@ -1,6 +1,5 @@
 import React from 'react';
 import { Component } from 'react';
-import { useState, useEffect } from 'react';
 
 class Sidebar extends Component {
     constructor(props) {

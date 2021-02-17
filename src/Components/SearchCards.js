@@ -3,8 +3,26 @@ import React, { Component } from 'react';
 class SearchCards extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {
+            fullDescription: false
+        }
+        
+        this.fullDescriptionTrue = this.fullDescriptionTrue.bind(this)
+        this.fullDescriptionFalse = this.fullDescriptionFalse.bind(this)
     }
+
+    fullDescriptionTrue() {
+        this.setState(() => ({
+            fullDescription: true
+        }))
+    }
+
+    fullDescriptionFalse() {
+        this.setState(() => ({
+            fullDescription: false
+        }))
+    }
+
     render() { 
         return ( 
             <div style={cardOuter}>
@@ -12,7 +30,7 @@ class SearchCards extends Component {
                     <h2 style={cardTitle}>{this.props.title}</h2>
                     <img style={roundedImage} alt={this.props.title} src={this.props.image}></img>
                     <p></p>
-                    <button>Add this item</button>
+                    <button id={this.props.id} onClick={this.props.handleSelect}>Add this item</button>
                 </div>
 
                 <div>
@@ -26,7 +44,13 @@ class SearchCards extends Component {
                 </div>
 
                 <div>
-                    <p>{this.props.description.slice(0, 250).replace(/(<([^>]+)>)/gi, "")}... <br /> <button>Tell me more, tell me more</button></p>
+                    {
+                        this.state.fullDescription
+                        ?
+                        <p>{this.props.description.replace(/(<([^>]+)>)/gi, "")}... <br /> <button onClick={this.fullDescriptionFalse}>Okay, that's enough</button></p>
+                        :
+                        <p>{this.props.description.slice(0, 250).replace(/(<([^>]+)>)/gi, "")}... <br /> <button onClick={this.fullDescriptionTrue}>Tell me more, tell me more</button></p>
+                    }
                 </div>
             </div>
          );
