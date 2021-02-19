@@ -4,6 +4,7 @@ import GraphContainer from "./GraphContainer"
 import axios from "axios"
 import SearchWindow from './SearchWindow';
 import MealCard from './MealCard';
+import IngredientList from "./IngredientList";
 
 class AppContainer extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class AppContainer extends Component {
             searchWindowVisible: false,
             data: [],
             cardData: [],
+            mealVals: [],
             total: {
                 calories: 0,
                 carbs: 0,
@@ -124,10 +126,23 @@ class AppContainer extends Component {
 
     setFoodId(id) {
         this.setState((state) => ({
+            mealVals: [...state.mealVals, {
+                calories: id.calories,
+                fat: id.fat,
+                protein: id.protein,
+                carbs: id.carbs
+            }],
+            total: {
+                calories: state.total.calories += id.calories,
+                fat: state.total.fat += id.fat,
+                carbs: state.total.carbs += id.carbs,
+                protein: state.total.protein += id.protein
+            },
             cardData: [...state.cardData, id],
-            searchWindowVisible: false
+            searchWindowVisible: false,
+
         }))
-        setTimeout(() => console.log(this.state.cardData), 200)
+        setTimeout(() => console.log(this.state.cardData), 100)
     }
 
     incrementPage() {
@@ -242,6 +257,7 @@ class AppContainer extends Component {
             page: 0
         }))
     }
+
     render() { 
         let form = 
         <div style={bgCard}>
@@ -280,17 +296,21 @@ class AppContainer extends Component {
                 {/* Mid refactor here my plan is infinite monkeys */}
                 <div style={{position: "absolute", zIndex: "3", top: "200px", left: "200px"}}>
                     <button onClick={this.makeFormSee}>I'm a button</button>
-                    {this.state.cardData.map((elem) => 
-                        <MealCard 
-                            key={elem.id} 
-                            title={elem.title} 
-                            image={elem.image}
-                            calories={elem.calories}
-                            fat={elem.fat}
-                            protein={elem.protein}
-                            carbs={elem.carbs}
-                        />)}
+                    <IngredientList dataList={this.state.cardData}/>
+                    {
+                        this.state.cardData.map((elem) => 
+                            <MealCard 
+                                key={elem.id} 
+                                title={elem.title} 
+                                image={elem.image}
+                                calories={elem.calories}
+                                fat={elem.fat}
+                                protein={elem.protein}
+                                carbs={elem.carbs}
+                            />)
+                    }
                     {this.state.formVisible && form}
+                    
                 </div>
                 {
                     this.state.searchWindowVisible 
@@ -306,13 +326,6 @@ class AppContainer extends Component {
                         pageReset={this.resetPageToZero}
                     />
                 }
-                {/* <MealContainer 
-                    carbs={this.state.total.carbs} 
-                    fat={this.state.total.fat} 
-                    protein={this.state.total.protein} 
-                    calories={this.state.total.calories}
-                    onChange={this.handleMealChange}
-                    numCards={this.props.cardsToShow}/> */}
                 <GraphContainer 
                     carbs={this.state.total.carbs} 
                     fat={this.state.total.fat} 
