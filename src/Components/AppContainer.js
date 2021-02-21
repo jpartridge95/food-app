@@ -133,16 +133,16 @@ class AppContainer extends Component {
                 carbs: id.carbs
             }],
             total: {
-                calories: state.total.calories += id.calories,
-                fat: state.total.fat += id.fat,
-                carbs: state.total.carbs += id.carbs,
-                protein: state.total.protein += id.protein
+                calories: state.total.calories += id.calories || id.calories,
+                fat: state.total.fat += id.fat || id.fat,
+                carbs: state.total.carbs += id.carbs || id.carbs,
+                protein: state.total.protein += id.protein || id.protein
             },
             cardData: [...state.cardData, id],
             searchWindowVisible: false,
 
         }))
-        setTimeout(() => console.log(this.state.cardData), 100)
+        setTimeout(() => console.log(this.state.total.fat), 100)
     }
 
     incrementPage() {
@@ -309,6 +309,10 @@ class AppContainer extends Component {
                                 carbs={elem.carbs}
                             />)
                     }
+                    <GraphContainer 
+                    dataByVals={this.state.mealVals}
+                    total={this.state.total}
+                />
                     {this.state.formVisible && form}
                     
                 </div>
@@ -326,11 +330,7 @@ class AppContainer extends Component {
                         pageReset={this.resetPageToZero}
                     />
                 }
-                <GraphContainer 
-                    carbs={this.state.total.carbs} 
-                    fat={this.state.total.fat} 
-                    protein={this.state.total.protein} 
-                    calories={this.state.total.calories}/>
+                
             </div>
         );
     }
