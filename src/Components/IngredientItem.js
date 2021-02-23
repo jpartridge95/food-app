@@ -8,11 +8,11 @@ class IngredientItem extends Component {
     }
     render() { 
         return (
-            <div>
-                <h4>{this.props.data.title}</h4>
+            <div style={itemSeperator}>
+                <h4 style={titleAndParagraph} >{this.props.data.title}</h4>
                 {
                     this.props.data.ingredients.map((elem) => 
-                    <p>{elem[0]}: {elem[1]} {elem[2]}</p>
+                    <p style={titleAndParagraph} >{elem[0]}: {elem[1]} {elem[2]}</p>
                     )
                 }
             </div>
@@ -20,4 +20,15 @@ class IngredientItem extends Component {
     }
 }
  
+const itemSeperator = {
+    border: "2px solid green",
+    marginBottom: "5px",
+    backgroundColor: "rgba(250,250,250,0.4)",
+    borderRadius: "0.5rem"
+}
+
+const titleAndParagraph = {
+    marginLeft: "5px"
+}
+
 export default IngredientItem;

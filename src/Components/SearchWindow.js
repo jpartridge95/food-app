@@ -70,7 +70,9 @@ class SearchWindow extends Component {
 }
 
 const closeButton = {
-    height: "1.5rem"
+    height: "1.5rem",
+    background: "none",
+    border: "none"
 }
 
 const bgCard = {

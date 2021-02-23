@@ -1,30 +1,16 @@
 import React from 'react';
-import { Component, useEffect, useState } from 'react';
-import axios from "axios";
-import Sidebar from './Sidebar';
+import { Component } from 'react';
+
 
 
 class Title extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     visible: false
-        // }
-        // this.toggleVisible = this.toggleVisible.bind(this)
-    }
-
 
     render() {
         return ( 
             <header style={titleBack}> 
-                {this.props.visible ? 
-                <button onClick={this.props.toggleVisible}>Close Menu</button>
-                :
-                <button onClick={this.props.toggleVisible}>Open Menu</button>
-                }
             <div style={blockLeft}>
                 <h1 style={titleText}>Thought for Food {this.props.numCards}</h1>
-                <p style={subTitle}>Powered by Spoonacular and ImageCharts</p>
+                <p style={subTitle}>Powered by Spoonacular and quickChart.io</p>
             </div>
 
             <div style={blockRight}>
@@ -64,7 +50,7 @@ const titleBack = {
     backgroundColor: "rgba(245, 245, 245, 0.6)",
     display: "flex",
     flexDirection: "row",
-    overflow: "auto",
+    overflow: "none",
     position: "fixed",
     top: "0",
     left: "0",
@@ -75,12 +61,12 @@ const titleBack = {
 
 const titleText = {
     color: "green",
-    marginLeft: "1rem"
+    marginLeft: "2rem"
 }
 
 const subTitle = {
     color: "#002601",
     fontSize: "0.8rem",
-    marginLeft: "1rem"
+    marginLeft: "1.8rem"
 }
 

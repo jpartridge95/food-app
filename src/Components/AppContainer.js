@@ -261,61 +261,87 @@ class AppContainer extends Component {
     render() { 
         let form = 
         <div style={bgCard}>
-            <button onClick={this.makeFormHide}>X</button>
-            <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                <label>Input search term</label>
-                <input name="query" type="text" required></input>
-                <label>Dietary requirements? (tick all that apply)</label>
-                <input name="vegetarian" type="checkbox" value="vegetarian"></input>
-                <label>Vegetarian</label>
-                <input name="vegan" type="checkbox" value="vegan"></input>
-                <label>Vegan</label>
-                <input name="glutenFree" type="checkbox" value="gluten free"></input>
-                <label>Gluten free</label>
-                <label>Minimum Calories per serving</label>
-                <input name="minCal" type="number"></input>
-                <label>Maximum Calories per serving</label>
-                <input name="maxCal" type="number"></input>
-                <label>Minimum Fat per serving</label>
-                <input name="minFat" type="number"></input>
-                <label>Maximum Fat per serving</label>
-                <input name="maxFat" type="number"></input>
-                <label>Minimum Carbs per serving</label>
-                <input name="minCarb" type="number"></input>
-                <label>Maximum Carbs per serving</label>
-                <input name="maxCarb" type="number"></input>
-                <label>Minimum protein per serving</label>
-                <input name="minProt" type="number"></input>
-                <label>Maximum protein per serving</label>
-                <input name="maxProt" type="number"></input>
-                <input type="submit" value="Search"></input>
+            <button style={closeButtonStyle} onClick={this.makeFormHide}>X</button>
+            <form style={formStyle} onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                <span style={formSpanStyle}>
+                    <label>Input search term: </label>
+                    <input name="query" type="text" required></input>
+                </span>
+                <label style={formSpanStyle}>Dietary requirements? (tick all that apply)</label>
+                <span>
+                    <input name="vegetarian" type="checkbox" value="vegetarian"></input>
+                    <label>Vegetarian</label>
+                </span>
+                <span>
+                    <input name="vegan" type="checkbox" value="vegan"></input>
+                    <label>Vegan</label>
+                </span>
+                <span>
+                    <input name="glutenFree" type="checkbox" value="gluten free"></input>
+                    <label>Gluten free</label>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Minimum Calories per serving: </label>
+                    <input name="minCal" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Maximum Calories per serving: </label>
+                    <input name="maxCal" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Minimum Fat per serving: </label>
+                    <input name="minFat" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Maximum Fat per serving: </label>
+                    <input name="maxFat" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Minimum Carbs per serving: </label>
+                    <input name="minCarb" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Maximum Carbs per serving: </label>
+                    <input name="maxCarb" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Minimum protein per serving: </label>
+                    <input name="minProt" type="number"></input>
+                </span>
+                <span style={formSpanStyle}>
+                    <label>Maximum protein per serving: </label>
+                    <input name="maxProt" type="number"></input>
+                </span>
+                <input style={formSpanStyle} type="submit" value="Search"></input>
             </form>
         </div>
         return (
             <div>
-                {/* Mid refactor here my plan is infinite monkeys */}
-                <div style={{position: "absolute", zIndex: "3", top: "200px", left: "200px"}}>
-                    <button onClick={this.makeFormSee}>I'm a button</button>
-                    <IngredientList dataList={this.state.cardData}/>
-                    {
-                        this.state.cardData.map((elem) => 
-                            <MealCard 
-                                key={elem.id} 
-                                title={elem.title} 
-                                image={elem.image}
-                                calories={elem.calories}
-                                fat={elem.fat}
-                                protein={elem.protein}
-                                carbs={elem.carbs}
-                            />)
-                    }
-                    <GraphContainer 
-                    dataByVals={this.state.mealVals}
-                    total={this.state.total}
-                />
+                    <div style={mealPlacement}>
+                        {
+                            this.state.cardData.map((elem) => 
+                                <MealCard
+                                    style={mealCardPlacement} 
+                                    key={elem.id} 
+                                    title={elem.title} 
+                                    image={elem.image}
+                                    calories={elem.calories}
+                                    fat={elem.fat}
+                                    protein={elem.protein}
+                                    carbs={elem.carbs}
+                                />)
+                        }
+                        <button style={addMealStyle} onClick={this.makeFormSee}>Add Meal</button>
+                    </div>
+                    <div style={infoHolderStyle}>
+                        <div>
+                            <GraphContainer total={this.state.total}/>
+                        </div>
+                        <div style={recipeBox}>
+                            <IngredientList dataList={this.state.cardData}/>
+                        </div>
+                    </div>
                     {this.state.formVisible && form}
-                    
-                </div>
                 {
                     this.state.searchWindowVisible 
                     && 
@@ -340,7 +366,7 @@ const bgCard = {
     position: "fixed",
     display: "flex",
     height: "82vh",
-    width: "82vw",
+    width: "50vw",
     zIndex: "3",
     backgroundColor: "rgba(250, 250, 250, 0.95)",
     margin: "auto",
@@ -349,7 +375,80 @@ const bgCard = {
     left: "0",
     right: "0",
     borderRadius: "1rem",
-    boxShadow: "2px 2px 30px grey"
+    boxShadow: "2px 2px 30px grey",
+    overflow: "scroll"
+}
+const mealPlacement = {
+    position: "fixed",
+    width: "95vw",
+    height: "38vh",
+    overflow: "scroll",
+    top: "110px",
+    display: "inline-flex",
+    gap: "1rem",
+    left: "0",
+    right: "0",
+    marginLeft: "auto",
+    marginRight: "auto"
+}
+
+const mealCardPlacement = {
+    marginLeft: "0.3rem",
+}
+
+const addMealStyle = {
+    border: "none",
+    background: "rgba(250, 250, 250, 0.4)",
+    borderRadius: "0.8rem",
+    fontSize: "2rem",
+    boxShadow: "2px 2px 30px grey",
+    height: "30vh",
+    top: "0",
+    bottom: "0",
+    marginTop: "auto",
+    marginBottom: "auto",
+    marginLeft: "0.3rem"
+}
+
+const formStyle = {
+    display: "flex",
+    flexDirection: "column",
+    width: "78vw",
+    alignItems: "center"
+    
+}
+
+const closeButtonStyle = {
+    border: "none",
+    background: "none",
+    height: "2rem",
+    fontSize: "1.5rem"
+}
+
+const formSpanStyle = {
+    marginTop: "1.1rem"
+}
+
+const infoHolderStyle = {
+    height: "42vh",
+    width: "95vw",
+    display: "flex",
+    position: "fixed",
+    overflow: "scroll",
+    top: "55vh",
+    left: "0",
+    right: "0",
+    marginLeft: "auto",
+    marginRight: "auto",
+    flexWrap: "wrap",
+    justifyContent: "space-around"
+}
+
+const recipeBox = {
+    height: "39vh",
+    width: "300px",
+    flex: "0 1 auto",
+    overflow: "scroll"
 }
  
 export default AppContainer;
