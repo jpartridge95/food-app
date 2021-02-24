@@ -72,13 +72,13 @@ class Feedback extends Component {
                         </span>
                         <span>
                             <label>What email address should I contact you on? </label>
-                            <input name="email" type="email"></input>
+                            <input name="email" type="email" required></input>
                         </span>
                         {/* Go to formspree and set up form using axios and http response handler
                         && style out the form to look fresh */}
                         
                             <label>Leave a message</label>
-                            <textarea name="message"></textarea>
+                            <textarea name="message" required></textarea>
                         
                         <input type="submit" value="Send Message"></input>
                     </form>
