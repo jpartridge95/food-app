@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../index.css"
 
 class About extends Component {
     
@@ -11,22 +12,20 @@ class About extends Component {
                     </button>
                 </div>
 
-                <div>
+                <div className="scrollable-div" style={aboutDiv}>
                     <h1 style={cardTitle}>What we're about</h1>
                     <p style={cardBody}>
                         Hi, <br />
-                        My name is Jordan, the sole founder and creator of Thought for Food and I'm a 
-                        slightly fanatical home chef. My knives are sharp, my wits are dull and
-                        I love talking and cooking food. However there has always been one element of 
-                        cooking which I've always found a hassle - Planning. <br /> <br />
+                        My name is Jordan, and my mission is to make meals easier by removing the worst 
+                        part of cooking, the planning stage. <br /> <br />
                         At every stage planning is a pain, from trying to decide what to cook
                         (especially when on a specific diet), to creating a shopping list, then actually
-                        going to the store to buy them. Which is why I decided to create this. My 
-                        initial plan was to create something for myself to help me make informed decisions
-                        before heading to the store and getting lost in the aisles, ultimately forgetting
-                        to pick up half the ingredients for the dish I'm creating that night. <br /> <br />
+                        going to the store to buy them; invariably forgetting half <br /> <br />
                         Which brings us to the question you might be asking yourself, what exactly
-                        does this website do? <br />
+                        does this website do? <br /> <br />
+                        Well it helps with planning meals, providing details on macronutrients and giving
+                        a shopping list to help you know which ingredients to pick up. <br /> <br /> 
+                        Hit Add meal to get started
                     </p>
                 </div>
             </div>
@@ -55,21 +54,28 @@ const cardButton = {
     background: "none",
     border: "none",
     fontSize: "1.3rem",
-    margin: "3rem 5rem",
-    marginBottom: "0px"
+    margin: "1rem"
 }
 
 const cardBody = {
-    marginLeft: "5rem",
-    color: "#002601",
-    marginRight: "5rem"
+    color: "#002601"
 }
 
 const cardTitle = {
-    fontSize: "3rem",
+    fontSize: "2.5rem",
     marginTop: "0px",
     textAlign: "center",
     color: "green"
+}
+
+const aboutDiv = {
+    overflow: "scroll",
+    position: "absolute", 
+    top: "0",
+    bottom: "0",
+    left: "0",
+    right: "0",
+    margin: "4rem"
 }
 
 export default About

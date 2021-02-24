@@ -39,6 +39,8 @@ class Feedback extends Component {
         })
         .catch((response) => {
             this.handleServerResponse(false, response.response.data.error, form)
+            this.setState({thankMessage: "Ooops something went wrong here email me directly at \n jordanpartridge@gmail.com"})
+            setTimeout(() => this.setState({thankMessage: ""}), 5000)
         });
     }
 
@@ -52,7 +54,7 @@ class Feedback extends Component {
                     </button>
                 </div>
 
-                <div>
+                <div style={aboutDiv}>
                     <h1 style={cardTitle}>Want to give me some feedback?</h1>
                     <p style={cardBody}>
                         Any feedback, fill out the form below, hit send message and I will endeavour to get back
@@ -106,27 +108,34 @@ const cardButton = {
     background: "none",
     border: "none",
     fontSize: "1.3rem",
-    margin: "3rem 5rem",
+    margin: "1rem",
     marginBottom: "0px"
 }
 
 const cardBody = {
-    marginLeft: "5rem",
     color: "#002601",
-    marginRight: "5rem"
 }
 
 const cardTitle = {
-    fontSize: "3rem",
+    fontSize: "2.5rem",
     marginTop: "0px",
     textAlign: "center",
     color: "green"
 }
 
-const formBody ={
-    margin: "5rem",
+const formBody = {
     display: "flex",
     flexDirection: "column"
+}
+
+const aboutDiv = {
+    overflow: "scroll",
+    position: "absolute", 
+    top: "0",
+    bottom: "0",
+    left: "0",
+    right: "0",
+    margin: "2rem"
 }
  
 export default Feedback;

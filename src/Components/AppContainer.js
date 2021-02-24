@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import GraphContainer from "./GraphContainer"
-// import MealContainer from "./MealContainer"
 import axios from "axios"
 import SearchWindow from './SearchWindow';
 import MealCard from './MealCard';
 import IngredientList from "./IngredientList";
+import "../index.css"
 
 class AppContainer extends Component {
     constructor(props) {
@@ -317,7 +317,7 @@ class AppContainer extends Component {
         </div>
         return (
             <div>
-                    <div style={mealPlacement}>
+                    <div className="scrollable-div" style={mealPlacement}>
                         {
                             this.state.cardData.map((elem) => 
                                 <MealCard
@@ -333,11 +333,11 @@ class AppContainer extends Component {
                         }
                         <button style={addMealStyle} onClick={this.makeFormSee}>Add Meal</button>
                     </div>
-                    <div style={infoHolderStyle}>
+                    <div className="scrollable-div" style={infoHolderStyle}>
                         <div>
                             <GraphContainer total={this.state.total}/>
                         </div>
-                        <div style={recipeBox}>
+                        <div className="recipe-div" style={recipeBox}>
                             <IngredientList dataList={this.state.cardData}/>
                         </div>
                     </div>
@@ -367,6 +367,7 @@ const bgCard = {
     display: "flex",
     height: "82vh",
     width: "50vw",
+    minWidth: "300px",
     zIndex: "3",
     backgroundColor: "rgba(250, 250, 250, 0.95)",
     margin: "auto",
@@ -389,7 +390,8 @@ const mealPlacement = {
     left: "0",
     right: "0",
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    scrollbarWidth: "thin"
 }
 
 const mealCardPlacement = {

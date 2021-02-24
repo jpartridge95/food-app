@@ -17,7 +17,7 @@ class SearchWindow extends Component {
         return ( 
             <div style={bgCard}>
                 <button onClick={this.props.hideSearchWindow} style={closeButton}>X</button>
-                <div style={cardHolder}>
+                <div className="recipe-div" style={cardHolder}>
                     {this.props.data.map((elem) => 
                         <SearchCards 
                             key={elem.id}
@@ -80,6 +80,7 @@ const bgCard = {
     display: "flex",
     height: "82vh",
     width: "82vw",
+    minWidth: "350px",
     zIndex: "3",
     backgroundColor: "rgba(250, 250, 250, 0.95)",
     margin: "auto",
@@ -101,7 +102,11 @@ const cardHolder = {
     margin: "auto",
     overflow: "scroll",
     boxShadow: "2px 2px 15px grey",
-    borderRadius: "1rem"
+    borderRadius: "1rem",
+    display: "inline-flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    minWidth: "325px"
 }
 
 const controlButtons = {

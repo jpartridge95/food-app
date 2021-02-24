@@ -26,7 +26,7 @@ class SearchCards extends Component {
     render() { 
         return ( 
             <div style={cardOuter}>
-                <div style={floatLeft}>
+                <div>
                     <h2 style={cardTitle}>{this.props.title}</h2>
                     <img style={roundedImage} alt={this.props.title} src={this.props.image}></img>
                     <p></p>
@@ -72,15 +72,8 @@ const cardOuter = {
     padding: "1rem",
     borderRadius: "2rem",
     margin: "1rem",
-    content: "",
-    clear: "both",
-    display: "table"
-}
-
-const floatLeft = {
-    float: "left",
-    marginRight: "2rem",
-    width: "20vw"
+    width: "32vw",
+    minWidth: "270px"
 }
 
 const listStyle = {

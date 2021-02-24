@@ -18,7 +18,8 @@ class GraphContainer extends Component {
 const theOne = {
     marginBottom: "1rem",
     backgroundColor: "rgba(250, 250, 250, 0.4)",
-    borderRadius: "0.5rem"
+    borderRadius: "0.5rem",
+    boxShadow: "2px 2px 30px grey"
 }
  
 export default GraphContainer;
