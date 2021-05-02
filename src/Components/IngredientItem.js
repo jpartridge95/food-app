@@ -8,27 +8,16 @@ class IngredientItem extends Component {
     }
     render() { 
         return (
-            <div style={itemSeperator}>
-                <h4 style={titleAndParagraph} >{this.props.data.title}</h4>
+            <div className={"ingredient-block"}>
+                <h4 >{this.props.data.title}</h4>
                 {
                     this.props.data.ingredients.map((elem) => 
-                    <p style={titleAndParagraph} >{elem[0]}: {elem[1]} {elem[2]}</p>
+                    <p><span className={"ingredient-name"}>{elem[0]}</span>: <br/> {elem[1]} {elem[2]}</p>
                     )
                 }
             </div>
         );
     }
-}
- 
-const itemSeperator = {
-    border: "2px solid green",
-    marginBottom: "5px",
-    backgroundColor: "rgba(250,250,250,0.4)",
-    borderRadius: "0.5rem"
-}
-
-const titleAndParagraph = {
-    marginLeft: "5px"
 }
 
 export default IngredientItem;

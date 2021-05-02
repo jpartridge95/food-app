@@ -47,22 +47,22 @@ class Feedback extends Component {
 
     render() { 
         return ( 
-            <div style={bgCard}>
+            <div className={"card-content"}>
                 <div>
-                    <button style={cardButton} onClick={this.props.toggleFeedbackVisible}>
+                    <button className={"close-button"} onClick={this.props.toggleFeedbackVisible}>
                         X
                     </button>
                 </div>
 
-                <div style={aboutDiv}>
-                    <h1 style={cardTitle}>Want to give me some feedback?</h1>
-                    <p style={cardBody}>
+                <div className={"pop-up-inner-container"}>
+                    <h1>Feedback</h1>
+                    <p className={"pop-up-content"}>
                         Any feedback, fill out the form below, hit send message and I will endeavour to get back
                         to you as quickly as possible.
                     </p>
-                    <form onSubmit={this.onFormSubmit} style={formBody}>
+                    <form onSubmit={this.onFormSubmit} className={"feedback-layout"}>
                         <span>
-                            <label>What type of feedback is it? </label>
+                            <label>What type of feedback is it? </label><br/>
                             <select name="dropdown">
                                 <option value="positive">Positive Feedback</option>
                                 <option value="negative">Complaints</option>
@@ -71,71 +71,20 @@ class Feedback extends Component {
                             </select>
                         </span>
                         <span>
-                            <label>What email address should I contact you on? </label>
+                            <label>What email address should I contact you on? </label><br/>
                             <input name="email" type="email" required></input>
                         </span>
-                        {/* Go to formspree and set up form using axios and http response handler
-                        && style out the form to look fresh */}
                         
                             <label>Leave a message</label>
                             <textarea name="message" required></textarea>
                         
-                        <input type="submit" value="Send Message"></input>
+                        <input className={"form-submit"} type="submit" value="Send Message"></input>
                     </form>
-                    <p style={cardBody}>{this.state.thankMessage}</p>
+                    <p className={"pop-up-content"}>{this.state.thankMessage}</p>
                 </div>
             </div>
          );
     }
-}
-
-const bgCard = {
-    position: "absolute",
-    height: "75vh",
-    width: "75vw",
-    zIndex: "3",
-    backgroundColor: "rgba(250, 250, 250, 0.95)",
-    margin: "auto",
-    top: "0",
-    bottom: "0",
-    left: "0",
-    right: "0",
-    borderRadius: "1rem",
-    boxShadow: "2px 2px 30px grey"
-}
-
-const cardButton = {
-    background: "none",
-    border: "none",
-    fontSize: "1.3rem",
-    margin: "1rem",
-    marginBottom: "0px"
-}
-
-const cardBody = {
-    color: "#002601",
-}
-
-const cardTitle = {
-    fontSize: "2.5rem",
-    marginTop: "0px",
-    textAlign: "center",
-    color: "green"
-}
-
-const formBody = {
-    display: "flex",
-    flexDirection: "column"
-}
-
-const aboutDiv = {
-    overflow: "scroll",
-    position: "absolute", 
-    top: "0",
-    bottom: "0",
-    left: "0",
-    right: "0",
-    margin: "2rem"
 }
  
 export default Feedback;

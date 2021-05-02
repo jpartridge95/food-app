@@ -4,7 +4,7 @@ import axios from "axios"
 import SearchWindow from './SearchWindow';
 import MealCard from './MealCard';
 import IngredientList from "./IngredientList";
-import "../index.css"
+import "../App.css"
 
 class AppContainer extends Component {
     constructor(props) {
@@ -260,14 +260,14 @@ class AppContainer extends Component {
 
     render() { 
         let form = 
-        <div style={bgCard}>
-            <button style={closeButtonStyle} onClick={this.makeFormHide}>X</button>
-            <form style={formStyle} onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                <span style={formSpanStyle}>
+        <div className={"food-form"}>
+            <button className={"close-button"} onClick={this.makeFormHide}>X</button>
+            <form  className={"inner-food-form"} onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                <span>
                     <label>Input search term: </label>
                     <input name="query" type="text" required></input>
                 </span>
-                <label style={formSpanStyle}>Dietary requirements? (tick all that apply)</label>
+                <label>Dietary requirements? (tick all that apply)</label>
                 <span>
                     <input name="vegetarian" type="checkbox" value="vegetarian"></input>
                     <label>Vegetarian</label>
@@ -280,48 +280,48 @@ class AppContainer extends Component {
                     <input name="glutenFree" type="checkbox" value="gluten free"></input>
                     <label>Gluten free</label>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Minimum Calories per serving: </label>
                     <input name="minCal" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Maximum Calories per serving: </label>
                     <input name="maxCal" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Minimum Fat per serving: </label>
                     <input name="minFat" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Maximum Fat per serving: </label>
                     <input name="maxFat" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Minimum Carbs per serving: </label>
                     <input name="minCarb" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Maximum Carbs per serving: </label>
                     <input name="maxCarb" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Minimum protein per serving: </label>
                     <input name="minProt" type="number"></input>
                 </span>
-                <span style={formSpanStyle}>
+                <span>
                     <label>Maximum protein per serving: </label>
                     <input name="maxProt" type="number"></input>
                 </span>
-                <input style={formSpanStyle} type="submit" value="Search"></input>
+                <input className={"form-submit"} type="submit" value="Search"></input>
             </form>
         </div>
         return (
             <div>
-                    <div className="scrollable-div" style={mealPlacement}>
+                    <div className="meal-layout scrollable-div">
                         {
                             this.state.cardData.map((elem) => 
                                 <MealCard
-                                    style={mealCardPlacement} 
+                                    className={"left-shuffle"} 
                                     key={elem.id} 
                                     title={elem.title} 
                                     image={elem.image}
@@ -331,13 +331,13 @@ class AppContainer extends Component {
                                     carbs={elem.carbs}
                                 />)
                         }
-                        <button style={addMealStyle} onClick={this.makeFormSee}>Add Meal</button>
+                        <button className={"add-meal-button"} onClick={this.makeFormSee}>Add Meal</button>
                     </div>
-                    <div className="scrollable-div" style={infoHolderStyle}>
+                    <div className={"divider-container scrollable-div"}>
                         <div>
                             <GraphContainer total={this.state.total}/>
                         </div>
-                        <div className="recipe-div" style={recipeBox}>
+                        <div className="recipe-container recipe-div">
                             <IngredientList dataList={this.state.cardData}/>
                         </div>
                     </div>
@@ -360,97 +360,6 @@ class AppContainer extends Component {
             </div>
         );
     }
-}
-
-const bgCard = {
-    position: "fixed",
-    display: "flex",
-    height: "82vh",
-    width: "50vw",
-    minWidth: "300px",
-    zIndex: "3",
-    backgroundColor: "rgba(250, 250, 250, 0.95)",
-    margin: "auto",
-    top: "0",
-    bottom: "0",
-    left: "0",
-    right: "0",
-    borderRadius: "1rem",
-    boxShadow: "2px 2px 30px grey",
-    overflow: "scroll"
-}
-const mealPlacement = {
-    position: "fixed",
-    width: "95vw",
-    height: "38vh",
-    overflow: "scroll",
-    top: "110px",
-    display: "inline-flex",
-    gap: "1rem",
-    left: "0",
-    right: "0",
-    marginLeft: "auto",
-    marginRight: "auto",
-    scrollbarWidth: "thin"
-}
-
-const mealCardPlacement = {
-    marginLeft: "0.3rem",
-}
-
-const addMealStyle = {
-    border: "none",
-    background: "rgba(250, 250, 250, 0.4)",
-    borderRadius: "0.8rem",
-    fontSize: "2rem",
-    boxShadow: "2px 2px 30px grey",
-    height: "30vh",
-    top: "0",
-    bottom: "0",
-    marginTop: "auto",
-    marginBottom: "auto",
-    marginLeft: "0.3rem"
-}
-
-const formStyle = {
-    display: "flex",
-    flexDirection: "column",
-    width: "78vw",
-    alignItems: "center"
-    
-}
-
-const closeButtonStyle = {
-    border: "none",
-    background: "none",
-    height: "2rem",
-    fontSize: "1.5rem"
-}
-
-const formSpanStyle = {
-    marginTop: "1.1rem"
-}
-
-const infoHolderStyle = {
-    height: "42vh",
-    width: "95vw",
-    display: "flex",
-    position: "fixed",
-    overflow: "scroll",
-    top: "55vh",
-    left: "0",
-    right: "0",
-    marginLeft: "auto",
-    marginRight: "auto",
-    flexWrap: "wrap",
-    justifyContent: "space-around"
-}
-
-const recipeBox = {
-    height: "39vh",
-    width: "300px",
-    flex: "0 1 auto",
-    overflow: "scroll"
 }
  
 export default AppContainer;

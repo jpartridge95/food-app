@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './index.css';
 import background from "./Images/background.jpg";
 import Title from "./Components/Title"
 import About from "./Components/About"
@@ -11,7 +12,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      aboutVisible: false
+      aboutVisible: false,
+      animateInAbout: ""
     }
 
     this.toggleVisible = this.toggleVisible.bind(this);
@@ -50,7 +52,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <img style={{zIndex: "-1", filter: "blur(5px)", position: "fixed", top: "0", left: "0", height: "100vh", width: "100vw"}} alt="" src={background} />
+        <img className={"background-image"}  alt="" src={background} />
         <Title
           numCards={this.state.numCards}
           visible={this.state.visible} 
@@ -63,6 +65,7 @@ class App extends Component {
           && 
           <About 
             toggleAboutVisible={this.toggleAboutVisible}
+            animateIn={this.state.animateInAbout}
           /> 
         }
         {
