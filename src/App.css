@@ -645,7 +645,12 @@ like a table of contents really  */
     }
 
     .title-text {
-        font-size: 2.3rem
+        font-size: 2.3rem;
+        margin-left: 0.4rem;
+    }
+
+    .left-block p {
+        margin-left: 0.3rem;
     }
 }
 
