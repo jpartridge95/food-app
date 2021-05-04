@@ -652,6 +652,10 @@ like a table of contents really  */
     .left-block p {
         margin-left: 0.3rem;
     }
+
+    .ingredient-block {
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* ###################
