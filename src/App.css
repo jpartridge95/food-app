@@ -664,6 +664,11 @@ like a table of contents really  */
 
     .meal-card-container h4 {
         line-height: 1em;
+        margin-top: -1rem;
+    }
+
+    .food-picture {
+        margin-top: -1rem;
     }
 
     .nav-buttons {
