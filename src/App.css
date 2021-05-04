@@ -245,7 +245,7 @@ like a table of contents really  */
     border-radius: 12px;
     margin: 1rem;
     width: 32vw;
-    min-width: "270px"
+    min-width: 270px
 }
 
 .food-search-card img {
@@ -646,15 +646,24 @@ like a table of contents really  */
 
     .title-text {
         font-size: 2.3rem;
-        margin-left: 0.4rem;
+        margin-left: 0.5rem;
     }
 
     .left-block p {
-        margin-left: 0.3rem;
+        margin-left: 0.4rem;
+        font-size: 0.6rem;
     }
 
     .ingredient-block {
         margin-bottom: 1.5rem;
+    }
+
+    .ingredient-block h4 {
+        line-height: 1em;
+    }
+
+    .meal-card-container h4 {
+        line-height: 1em;
     }
 }
 
