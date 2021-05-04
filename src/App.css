@@ -674,6 +674,10 @@ like a table of contents really  */
     .nav-buttons {
         margin-right: 1rem;
     }
+
+    .form-submit {
+        margin-bottom: 0.8rem;
+    }
 }
 
 /* ###################
