@@ -646,12 +646,12 @@ like a table of contents really  */
 
     .title-text {
         font-size: 2.3rem;
-        margin-left: 0.5rem;
+        margin-left: 1.1rem;
     }
 
     .left-block p {
-        margin-left: 0.4rem;
-        font-size: 0.6rem;
+        margin-left: 1rem;
+        font-size: 0.7rem;
     }
 
     .ingredient-block {
@@ -664,6 +664,10 @@ like a table of contents really  */
 
     .meal-card-container h4 {
         line-height: 1em;
+    }
+
+    .nav-buttons {
+        margin-right: 1rem;
     }
 }
 
