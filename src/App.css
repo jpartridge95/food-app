@@ -325,16 +325,39 @@ like a table of contents really  */
     display: flex;
     flex-direction: column;
     width: 78vw;
-    margin: 2rem 2rem 0 2rem;
+    margin: 3rem 5rem 0 2rem;
     font-size: 1rem;
 }
 
+.inner-food-form > span {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
+.inner-food-form > span > label {
+    flex: 1 0 40;
+    margin: initial;
+    max-width: 40%;
+}
+
 .inner-food-form > span > label ~ input {
-    margin: 0.1rem 0 1rem 0
+    /* margin: 0.1rem 0 1rem 0; */
+    flex: 1 0 40;
+    margin: initial;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: auto;
 }
 
 .inner-food-form > span > input {
-    margin: 1.1rem 0 0 1rem
+    /* margin: 1.1rem 0 0 1rem; */
+    flex: 0 1 30;
+    margin: initial;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .pop-up-inner-container {
@@ -595,7 +618,7 @@ like a table of contents really  */
 
 .ingredient-block h4 {
     font-size: 1.5rem;
-    line-height: 0rem;
+    line-height: 1em;
     margin: 2rem 0rem 2rem 0rem
 }
 
@@ -625,16 +648,27 @@ like a table of contents really  */
 
 /* Small screen media query changes */
 
-@media only screen and (max-width: 500px) {
-    .food-form {
-        overflow: scroll
-    }
+@media only screen and (max-width: 1200px) {
+    /* .food-form {
+        overflow: scroll;
+    } */
 
     .pop-up-inner-container {
         overflow: scroll;
         min-width: 250px;
         margin: 2rem 1rem 0 1rem
     }
+
+    .inner-food-form {
+        overflow: scroll;
+        margin: 2.5rem 1rem 2rem -1.3rem
+    }
+
+    .inner-food-form > span {
+        margin: 0.2rem 0rem 0.2rem 0rem
+    }
+
+    /* More breakpoints extra flex changes needed too */
 
     .pop-up-inner-container select, input, textarea {
         margin: 2rem 0rem 2rem 0rem
@@ -664,7 +698,7 @@ like a table of contents really  */
 
     .meal-card-container h4 {
         line-height: 1em;
-        margin-top: -1rem;
+        margin-top: 1rem;
     }
 
     .food-picture {
@@ -704,17 +738,20 @@ like a table of contents really  */
     background: green;
     }
     
-    .recipe-div::-webkit-scrollbar {
+    .recipe-div::-webkit-scrollbar,
+    .inner-food-form::-webkit-scrollbar {
     height: 0;
-    width: 7px
+    width: 4px
     }
     
-    .recipe-div::-webkit-scrollbar-thumb {
+    .recipe-div::-webkit-scrollbar-thumb,
+    .inner-food-form::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background: green;
     }
     
-    .recipe-div::-webkit-scrollbar-track {
+    .recipe-div::-webkit-scrollbar-track,
+    .inner-food-form::-webkit-scrollbar-track  {
     border-radius: 8px;
     border: none
     }
